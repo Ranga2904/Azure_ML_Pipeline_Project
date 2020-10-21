@@ -8,8 +8,7 @@ This model is then compared to an Azure AutoML run.
 ## Summary
 This dataset holds information from marketing campaigns initiated by a Portuguese marketing institution, detail coming in from phone calls. We seek to predict through classification whether or not the client would subscribe to a bank term deposit
 
-LogisticRegression 
-**In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
+LogisticRegression performed adequately with an accuracy of 91.3%, with AutoML's results being only marginally better (91.5%)
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
@@ -25,8 +24,5 @@ LogisticRegression
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
 
 ## Future work
-**What are some areas of improvement for future experiments? Why might these improvements help the model?**
-
-## Proof of cluster clean up
-**If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
-**Image of cluster marked for deletion**
+Opportunities to improve modeling include: 
+- ordinal encoding in place of one-hot encoding for variables like housing and education which may have a natural order when predicting policy subscriptions
