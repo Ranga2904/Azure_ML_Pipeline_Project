@@ -14,10 +14,10 @@ LogisticRegression performed adequately with an accuracy of 91.3%, with AutoML's
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
 
 **What are the benefits of the parameter sampler you chose?**
-The Random
+The RandomParameter sampler is more flexible in permitting continuous rather than just 'choice' or discrete selections of hyperparameter values. In my evaluation, I ended up using 'choice' to iterate through ranges of C and max iterations any use of a 'continuous' or 'uniform' sampler is enabled by RandomParameter.
 
 **What are the benefits of the early stopping policy you chose?**
-
+BanditPolicy is more geared towards achieving absolute performance through use of a slack factor unlike Truncation Policies or Median Stopping policies, which are focused on achieving good performance relative to other runs 
 
 ## AutoML
 AutoML selected a VotingEnsemble with hard voting, no penalty, and weights ranging from 0.33 to 0.66. These weights are used to calibrate class occurrences before making a final prediction.
@@ -29,3 +29,4 @@ LogisticRegression performed adequately with an accuracy of 91.3%, with AutoML's
 Opportunities to improve modeling include: 
 - ordinal encoding in place of one-hot encoding for variables like housing and education which may have a natural order when predicting policy subscriptions
 - adding the solver_type to assess 'sag' in its performance for prediction
+- Try BayesianParameter search
