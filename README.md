@@ -1,14 +1,13 @@
 # Optimizing an ML Pipeline in Azure
 
 ## Overview
-This project is part of the Udacity Azure ML Nanodegree.
-In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
+This project is part of the Udacity Azure ML Nanodegree. I built and optimized an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
 This model is then compared to an Azure AutoML run.
 
 ## Summary
 This dataset holds information from marketing campaigns initiated by a Portuguese marketing institution, detail coming in from phone calls. We seek to predict through classification whether or not the client would subscribe to a bank term deposit
 
-LogisticRegression performed adequately with an accuracy of 91.3%, with AutoML's results (through a VotingEnsemble) being only marginally better (91.5%)
+LogisticRegression performed adequately with an accuracy of 91.1%, with AutoML's results (through a VotingEnsemble) being marginally better (91.7%)
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
@@ -26,7 +25,6 @@ BanditPolicy is more geared towards achieving absolute performance through use o
 
 ## AutoML
 AutoML selected a VotingEnsemble with hard voting, no penalty, and weights ranging from 0.33 to 0.66. These weights are used to calibrate class occurrences before making a final prediction.
-See diagram of model architecture pipeline.
 
 ## Pipeline comparison
 LogisticRegression performed adequately with an accuracy of 91.3%, with AutoML's results (through a VotingEnsemble) being only marginally better (91.5%)
@@ -36,3 +34,4 @@ Opportunities to improve modeling include:
 - ordinal encoding in place of one-hot encoding for variables like housing and education which may have a natural order when predicting policy subscriptions
 - adding the solver_type to assess 'sag' in its performance for prediction
 - Try BayesianParameter search
+- Oversample the minority class to reduce existing imbalance between those who do and don't subscribe
