@@ -15,6 +15,9 @@ LogisticRegression performed adequately with an accuracy of 91.3%, with AutoML's
 Data is fed in with feature engineering completed to encode non-numerical features. After splitting into testing and training sets, the LogisticRegression classifier is used to fit and train with hyperparameter tuning done by HyperdriveConfig.
 See diagram of model architecture pipeline.
 
+
+
+
 **What are the benefits of the parameter sampler you chose?**
 The RandomParameter sampler is more flexible in permitting continuous rather than just 'choice' or discrete selections of hyperparameter values. In my evaluation, I ended up using 'choice' to iterate through ranges of C and max iterations any use of a 'continuous' or 'uniform' sampler is enabled by RandomParameter.
 
