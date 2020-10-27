@@ -45,7 +45,8 @@ This is the tolerance that AutoML searched for when iterating - once the error b
 This is a sequence of weights applied to predicted class probabilities to decide the final model output
 
 ## Pipeline comparison
-LogisticRegression performed adequately with an accuracy of 91.3%, with AutoML's results (through a VotingEnsemble) being only marginally better (91.5%)
+LogisticRegression performed adequately with an accuracy of 91.1%, with AutoML's results (through a VotingEnsemble) surpassing at 91.7% accuracy. By taking the votes of multiple classifiers and averaging their individual probabilities to arrive at a final probability - and therefore class, AutoML gets the benefit of "many different heads in the room" than a single head i.e. logisic regression. LogisticRegression, which is not using tree-based techniques, uses a much simpler sigmoid function to arrive at a decision on the final class.
+AutoML takes as input 
 
 ## Future work
 Opportunities to improve modeling include: 
