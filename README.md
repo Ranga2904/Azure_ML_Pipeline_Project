@@ -22,9 +22,13 @@ BanditPolicy is oriented more towards achieving absolute performance through use
 
 ## AutoML
 AutoML selected a VotingEnsemble classifier - as mentioned earlier, ensemble techniques improve machine learning performance through using multiple models. Voting is 'soft' meaning that it does a weighted average of predicted probabilities to arrive at a final cass. This VotingClassifier has the following parameter values:
-	l1_ratio = 0.8367: this mixing parameter tells us that AutoML relied more on L1 regularization to dampen overfitting risks than L2 regularization.
-	learning_rate = constant
-	loss = 'modified huber'
+
+#### L1_ratio = 0.8367
+This mixing parameter tells us that AutoML relied more on L1 regularization to dampen overfitting risks than L2 regularization.
+#### Learning_rate = constant
+This tells us that the step size at each iteration was held constant, as the model learnt new details. This isn't always advisable since we might prefer larger learning rates at the start that slow down as the model learns more.
+#### Loss = modified huber
+
 	max_iter = 1000: maximum number of iterations to go through when training the model
 	n_jobs = 1: not using concurrent workers, only using 100% of 1 core.
 	penalty = 'l2'
