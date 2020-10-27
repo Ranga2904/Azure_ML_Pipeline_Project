@@ -21,21 +21,28 @@ The RandomParameter sampler is more flexible in permitting continuous rather tha
 BanditPolicy is oriented more towards achieving absolute performance through use of a slack factor while Truncation Policies or Median Stopping policies focus on improving performance relative to other runs 
 
 ## AutoML
-AutoML selected a VotingEnsemble classifier - as mentioned earlier, ensemble techniques improve machine learning performance through using multiple models. Voting is 'soft' meaning that it does a weighted average of predicted probabilities to arrive at a final cass. This VotingClassifier has the following parameter values:
+AutoML selected a VotingEnsemble classifier - as mentioned earlier, ensemble techniques improve machine learning performance through using multiple models. Voting is 'soft' meaning that it does a weighted average of predicted probabilities to arrive at a final cass. This VotingClassifier has the following hyperparameter values, with accompanying explanations:
 
 #### L1_ratio = 0.8367
-This mixing parameter tells us that AutoML relied more on L1 regularization to dampen overfitting risks than L2 regularization.
+This mixing parameter tells us that AutoML relied on a combination of L1 and L2 regularization to dampen overfitting during training.
 #### Learning_rate = constant
 This tells us that the step size at each iteration was held constant, as the model learnt new details. This isn't always advisable since we might prefer larger learning rates at the start that slow down as the model learns more.
 #### Loss = modified huber
-
-	max_iter = 1000: maximum number of iterations to go through when training the model
-	n_jobs = 1: not using concurrent workers, only using 100% of 1 core.
-	penalty = 'l2'
-	power_t = 0.222: the t-test value used to decide whether a particular outcome is statistically significant.
-	random_state = None: allows the algorithm's stochasticity.
-	tol = 0.0001
-	weights = 0.111,0.333,0.222,0.111,0.111,0.111: this is a sequence of weights applied to predicted class probabilities to decide the final model output
+This is the loss function to be minimized when evaluating iterations. Unlike some other loss functions e.g. squared loss, Huber loss has a higher tolerance for outliers.
+### max_iter = 1000
+This gives us the maximum number of iterations allowable for training the model, irrespective of where model error was relative to tolerance (see below).
+### n_jobs = 1
+This setting means that I will only use 100% of 1 of the computing resource's cores - no concurrent operations. 
+### penalty = 'l2'
+This setting explains that the model chose l2 ridge regulatization to penalize errors i.e. it was willing to eliminate some features rather than simply shrinking coefficients
+### power_t = 0.222
+This is the t-test value used to decide whether a paricular outcome was statistically significant and therefore a legitimiate result i.e. were we outside the corresponding confidence interval to trust the final classification, or was this no better than simple chance?
+### random_state = None
+This enables the algorithm's inherent stochasticity and slightly different fits at different times mean that we might not get the same result at different trials.
+### tol = 0.0001
+This is the tolerance that AutoML searched for when iterating - once the error between predicted and actual were less than tolerance, the algorithm would stop iterating. 
+### weights = 0.111,0.333,0.222,0.111,0.111,0.111
+This is a sequence of weights applied to predicted class probabilities to decide the final model output
 
 ## Pipeline comparison
 LogisticRegression performed adequately with an accuracy of 91.3%, with AutoML's results (through a VotingEnsemble) being only marginally better (91.5%)
