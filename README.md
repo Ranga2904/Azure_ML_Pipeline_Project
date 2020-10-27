@@ -21,7 +21,17 @@ The RandomParameter sampler is more flexible in permitting continuous rather tha
 BanditPolicy is oriented more towards achieving absolute performance through use of a slack factor while Truncation Policies or Median Stopping policies focus on improving performance relative to other runs 
 
 ## AutoML
-AutoML selected a VotingEnsemble with hard voting, no penalty, and weights ranging from 0.33 to 0.66. These weights are used to calibrate class occurrences before making a final prediction.
+AutoML selected a VotingEnsemble classifier - as mentioned earlier, ensemble techniques improve machine learning performance through using multiple models. Voting is 'hard' meaning that it takes the most popularly predicted class as the final answer. This VotingClassifier has the following parameter values:
+l1_ratio = 0.8367
+learning_rate = constant
+loss = 'modified huber'
+max_iter = 1000
+n_jobs = 1
+penalty = 'l2'
+power_t = 0.222
+random_state = None
+tol = 0.0001
+weights = 0.111,0.333,0.222,0.111,0.111,0.111
 
 ## Pipeline comparison
 LogisticRegression performed adequately with an accuracy of 91.3%, with AutoML's results (through a VotingEnsemble) being only marginally better (91.5%)
