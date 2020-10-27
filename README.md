@@ -29,19 +29,19 @@ This mixing parameter tells us that AutoML relied on a combination of L1 and L2 
 This tells us that the step size at each iteration was held constant, as the model learnt new details. This isn't always advisable since we might prefer larger learning rates at the start that slow down as the model learns more.
 #### Loss = modified huber
 This is the loss function to be minimized when evaluating iterations. Unlike some other loss functions e.g. squared loss, Huber loss has a higher tolerance for outliers.
-### max_iter = 1000
+#### max_iter = 1000
 This gives us the maximum number of iterations allowable for training the model, irrespective of where model error was relative to tolerance (see below).
-### n_jobs = 1
+#### n_jobs = 1
 This setting means that I will only use 100% of 1 of the computing resource's cores - no concurrent operations. 
-### penalty = 'l2'
+#### penalty = 'l2'
 This setting explains that the model chose l2 ridge regulatization to penalize errors i.e. it was willing to eliminate some features rather than simply shrinking coefficients
-### power_t = 0.222
+#### power_t = 0.222
 This is the t-test value used to decide whether a paricular outcome was statistically significant and therefore a legitimiate result i.e. were we outside the corresponding confidence interval to trust the final classification, or was this no better than simple chance?
-### random_state = None
+#### random_state = None
 This enables the algorithm's inherent stochasticity and slightly different fits at different times mean that we might not get the same result at different trials.
-### tol = 0.0001
+#### tol = 0.0001
 This is the tolerance that AutoML searched for when iterating - once the error between predicted and actual were less than tolerance, the algorithm would stop iterating. 
-### weights = 0.111,0.333,0.222,0.111,0.111,0.111
+#### weights = 0.111,0.333,0.222,0.111,0.111,0.111
 This is a sequence of weights applied to predicted class probabilities to decide the final model output
 
 ## Pipeline comparison
